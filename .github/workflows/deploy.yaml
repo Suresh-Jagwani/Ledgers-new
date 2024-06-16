@@ -28,5 +28,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           known_hosts: "unnecessary"
 
+      - name: Adding Known Hosts
+        run: ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+
       - name: Deploy with rsync
         run: rsync -avz --delete . ${{ secrets.USERNAME }}@${{ secrets.HOST }}:${{ secrets.TARGET_DIRECTORY }}
