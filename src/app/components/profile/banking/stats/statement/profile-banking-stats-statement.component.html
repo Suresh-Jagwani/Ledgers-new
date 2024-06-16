@@ -1,0 +1,53 @@
+<div class="profile-banking-stats-statement">
+    @if (statement) {
+        
+        <div><span>Bank:</span><span>0</span></div>
+        <div><span>Account:</span><span>0</span></div>
+        <div><span>DAYS:</span><span>0</span></div>
+        <div><span>AVG Balance:</span><span>0</span></div>
+        <div><span>Start Balance:</span><span>0</span></div>
+        <div><span>End Balance:</span><span>0</span></div>
+        <div><span>% Change:</span><span>0</span></div>
+        <div><span>Transactions:</span><span>{{  statement.stats.deposits.count + statement.stats.withdrawals.count }}</span></div>
+        <div><span>PMTS:</span><span>0</span></div>
+        <div><span>Deposits:</span><span>0</span></div>
+        <div><span>Withdrawals:</span><span>0</span></div>
+        <div><span>Revenue:</span></div>
+        <div><span>AVG PMT:</span></div>
+        <div><span>Funders:</span><span>0</span></div>
+        <div><span>DEBT Accumalted:</span><span>{{  statement.stats.positions.total }}</span></div>
+        <div><span>New Positions:</span><span>{{  statement.stats.positions.total }}</span></div>
+        <div><span>DEBT Paid:</span></div>
+        <div><span>Total Transfers:</span></div>
+        <div><span>NET Transfers:</span></div>
+        <div><span>ID:</span><span>0</span></div>
+        <div><span>Parser ID:</span><span>0</span></div>
+        <div><span>Date Parsed:</span><span>0</span></div>
+        <div><span>Parsed By:</span><span>0</span></div>
+    }
+
+</div>
+
+
+<!--
+    <table mat-table [dataSource]="dataSource">
+        @for (column of columns; track $index) {
+        <ng-container [matColumnDef]="column">
+            <td mat-cell *matCellDef="let element">
+                @if(['column1', 'column3', 'column5', 'column7', 'column9'].includes(column)) {
+                    {{ element[column] }}
+                } @else if (column === 'span') {
+                } @else {
+                    {{ element[column] | number:'1.0-2' }}
+                }
+            </td>
+        </ng-container>
+        }
+
+        <tr mat-row *matRowDef="let row; columns: columns" class="element-row"></tr>
+
+        <tr class="noDataRow mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="5">No data to show</td>
+        </tr>
+    </table>
+-->

@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>Key</h2>
+<mat-dialog-content>
+    <form [formGroup]="keyForm">
+        <mat-form-field>
+            <mat-label>Parser</mat-label>
+            <mat-select formControlName="parser">
+                <mat-option value="Bank Statement">Bank Statement</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Bank</mat-label>
+            <mat-select multiple formControlName="bank">
+                <mat-select-trigger>
+                    {{(keyForm.get('bank').value?.[0] | uppercase) || ''}}
+                    @if ((keyForm.get('bank').value?.length || 0) > 1) {
+                      <span>
+                        (+{{(keyForm.get('bank').value?.length || 0) - 1}} {{keyForm.get('bank').value?.length === 2 ? 'other' : 'others'}})
+                      </span>
+                    }
+                  </mat-select-trigger>
+                @for (scheme of schemes | async; track $index) {
+                    <mat-option [value]="scheme.id">{{ scheme.bank | uppercase }}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="type">
+                    <mat-option value="funder">FUNDER</mat-option>
+                    <mat-option value="transfer">TRANSFER</mat-option>
+                    <mat-option value="credit">CREDIT</mat-option>
+                    <mat-option value="pull">PULL</mat-option>
+            </mat-select>
+        </mat-form-field>
+        @if(keyForm.get('type').value === 'funder') {
+            <mat-form-field class="large">
+                <mat-label>Funder</mat-label>
+                <mat-select multiple formControlName="funder">
+                    <mat-select-trigger>
+                        {{(keyForm.get('funder').value?.[0] | uppercase) || ''}}
+                        @if ((keyForm.get('funder').value?.length || 0) > 1) {
+                          <span>
+                            (+{{(keyForm.get('funder').value?.length || 0) - 1}} {{keyForm.get('funder').value?.length === 2 ? 'other' : 'others'}})
+                          </span>
+                        }
+                      </mat-select-trigger>
+                    @for (funder of funders | async; track $index) {
+                        <mat-option [value]="funder.id">{{ funder.name | uppercase }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+        }
+        
+        <mat-form-field [ngClass]="keyForm.get('type').value === 'funder' ? 'large' : 'full'">
+            <mat-label>Pattern</mat-label>
+            <input matInput formControlName="pattern">
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" (click)="insert()" cdkFocusInitial [disabled]="!keyForm.valid">Create</button>
+</mat-dialog-actions>

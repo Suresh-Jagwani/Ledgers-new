@@ -1,0 +1,26 @@
+table {
+    width: 100%;
+  }
+  
+.mat-column-date {
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+td, th {
+  text-align: center;
+  padding: 0 0 0 10px;
+}
+
+tr.element-row:hover {
+  background: whitesmoke;
+}
+
+tr.element-row:active {
+  background: #efefef;
+}
+
+.noDataRow {
+  text-align: center;
+  height: 50px;
+}

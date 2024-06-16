@@ -1,0 +1,38 @@
+
+<div class="merchant-banking-overview">
+    <div class="merchant-banking-overview__full merchant-banking-overview__long">
+        <mat-card>
+            <mat-card-content>
+                <app-merhcant-banking-chart [dataset]="lineConfig" #chart></app-merhcant-banking-chart>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="merchant-banking-overview__full">
+        <mat-card>
+            <mat-card-content>
+                <app-merchant-banking-stats></app-merchant-banking-stats>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="merchant-banking-overview__large merchant-banking-overview__short">
+        <mat-card>
+            <mat-card-content>
+                <app-merhcant-banking-chart type="bar" [dataset]="barConfig" #chart></app-merhcant-banking-chart>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="merchant-banking-overview__small merchant-banking-overview__short">
+        <mat-card>
+            <mat-card-content>
+                <app-merhcant-banking-chart type="pie" [dataset]="pieConfig" #chart></app-merhcant-banking-chart>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="merchant-banking-overview__full">
+        <mat-card>
+            <mat-card-content>
+                <app-merchant-banking-balances [balances]="balances"></app-merchant-banking-balances>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+* {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+header {
+    z-index: 10;
+    height: 5vh;
+}
+
+main {
+    height: 95vh;
+}

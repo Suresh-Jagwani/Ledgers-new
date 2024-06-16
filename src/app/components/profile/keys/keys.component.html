@@ -1,0 +1,45 @@
+<div class="keys">
+    <mat-drawer-container hasBackdrop="false" autosize>
+        <mat-drawer #drawer mode="side" opened>
+            <app-keys-form></app-keys-form>
+        </mat-drawer>
+        <mat-drawer-content #drawerContent>
+            <div class="content">
+                <div class="content__toolbar">
+                    <mat-card class="flex">
+                        <mat-card-content>
+                            <div class="content__toolbar__buttons">
+                                <button mat-icon-button (click)="drawer.toggle()">
+                                    <mat-icon>filter_list</mat-icon>
+                                </button>
+                                <span class="spacer"></span>
+                                <button mat-mini-fab matTooltip="Add" class="button-shadow">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                                <button mat-mini-fab matTooltip="Save" class="button-shadow">
+                                    <mat-icon>save</mat-icon>
+                                </button>
+                                <button mat-mini-fab matTooltip="delete" class="button-shadow">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                                <button mat-mini-fab matTooltip="Refresh" class="button-shadow">
+                                    <mat-icon>refresh</mat-icon>
+                                </button>
+                                <button mat-mini-fab matTooltip="More" class="button-shadow">
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="content__elements">
+                    <mat-card>
+                        <mat-card-content>
+                            <app-keys-table></app-keys-table>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>

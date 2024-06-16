@@ -1,0 +1,47 @@
+<div class="parser-banking-form">
+    <mat-card>
+        <mat-card-content>
+            <div class="form">
+                <mat-form-field>
+                    <mat-select value="formats">
+                        <mat-option value="formats">Formats</mat-option>
+                        <mat-option value="key_words">Key Words</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                <div class="form__item form__parse">
+                    <button mat-raised-button>
+                        <mat-icon>folder</mat-icon>Parse Statement
+                    </button>
+                </div>
+                <div class="form__item form__parse">
+                    <button mat-raised-button>Edit</button>
+                    <button mat-raised-button>Remove</button>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-content>
+            <div class="form">
+                <div class="form__item form__input">
+                    <mat-form-field>
+                        <mat-label>Filter</mat-label>
+                        <input matInput #input>
+                    </mat-form-field>
+                </div>
+                <div class="form__item">
+                    <mat-chip-listbox multiple aria-label="">
+                        <mat-chip-option color="primary" selected>Deposits</mat-chip-option>
+                        <mat-chip-option color="primary" selected>Withdrawals</mat-chip-option>
+                        <mat-chip-option color="primary" selected>Payments</mat-chip-option>
+                        <mat-chip-option color="primary" selected>Revenue</mat-chip-option>
+                      </mat-chip-listbox>
+                </div>
+                <div class="form__item form__toggle">
+                    <button mat-raised-button>Expand All</button>
+                    <button mat-raised-button>Collapse All</button>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

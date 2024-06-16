@@ -1,0 +1,19 @@
+form {
+    display: grid;
+    grid-template-columns: 250px 250px 250px;
+    column-gap: 10px;
+}
+
+mat-form-field {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+mat-optgroup {
+    font-weight: bold;
+}
+
+.full_width {
+    grid-column: 1 / span 3;
+}

@@ -1,0 +1,94 @@
+<div class="merchant-banking">
+    <mat-drawer-container hasBackdrop="false" autosize>
+        <mat-drawer #drawer mode="side" opened (openedChange)="refreshCharts()" (openedStart)="refreshCharts()">
+                <app-merchant-banking-form></app-merchant-banking-form>
+        </mat-drawer>
+        <mat-drawer-content #drawerContent>
+            <div class="content">
+                <div class="content__toolbar">
+                    <mat-card class="flex">
+                        <mat-card-content>
+                            <div class="content__toolbar__dates">
+                                <button mat-icon-button (click)="drawer.toggle()" (click)="refreshCharts()">
+                                    <mat-icon>filter_list</mat-icon>
+                                </button>
+                                <mat-chip-listbox multiple (change)="onChipListChange($event)">
+                                    @for (option of options; track option) {
+                                    <mat-chip-option color="primary" selected [value]="option">{{option | date:'MMM-YY':'UTC'}}</mat-chip-option>
+                                    }
+                                </mat-chip-listbox>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card>
+                        <mat-card-content>
+                            <div class="content__toolbar__actions">
+                                <mat-button-toggle-group>
+                                    <mat-button-toggle [routerLink]="'./Overview'" routerLinkActive  #rlaOverview="routerLinkActive" [checked]="rlaOverview.isActive">Overview</mat-button-toggle>
+                                    <mat-button-toggle [routerLink]="'./Statements'" routerLinkActive #rlaStatements="routerLinkActive" [checked]="rlaStatements.isActive">Summary</mat-button-toggle>
+                                  </mat-button-toggle-group>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="content__elements">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>
+
+<!--
+    
+            <div class="content__element">
+                <div class="content__element__full">
+                    <app-merhcant-banking-summary [balances]="this.balances" #summary></app-merhcant-banking-summary>
+                </div>
+                <div class="content__element__full">
+                    <app-merhcant-banking-chart [balances]="this.balances" #summary></app-merhcant-banking-chart>
+                </div>
+            </div>
+    <div class="content__element__full">
+                    <mat-tab-group mat-stretch-tabs="true">
+                        <mat-tab label="Balances">
+                            <app-merchant-banking-balances [balances]="balances"></app-merchant-banking-balances>
+                        </mat-tab>
+                        <mat-tab label="Transactions">
+                            <app-merchant-banking-transactions [transactions]="transactions"></app-merchant-banking-transactions>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+
+
+
+
+    <mat-accordion multi>
+                @for (statement of statements; track $index) {
+                
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{statement.start_date | date:'MMMM, YYYY'}}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{statement.bank | uppercase}} - {{statement.account}}
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+                        <mat-tab label="Overview">
+                            <app-merchant-banking-stats [statement]="statement"></app-merchant-banking-stats>
+                        </mat-tab>
+                        <mat-tab label="Daily Balance">
+                            <app-merchant-banking-balances [balances]="statement.balances"></app-merchant-banking-balances>
+                        </mat-tab>
+                        <mat-tab label="Transactions">
+                            <app-merchant-banking-transactions
+                                [transactions]="statement.transactions"></app-merchant-banking-transactions>
+                        </mat-tab>
+                    </mat-tab-group>
+                </mat-expansion-panel>
+                }
+            </mat-accordion>
+-->

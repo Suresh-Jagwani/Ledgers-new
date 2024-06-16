@@ -1,0 +1,14 @@
+.underwriting-proposed {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    width: 100%;
+    padding: 25px 12px;
+}
+
+.field {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px;
+    height: 35px;
+}

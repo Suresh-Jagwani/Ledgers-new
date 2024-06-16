@@ -1,0 +1,106 @@
+<table mat-table [dataSource]="dataSource" multiTemplateDataRows>
+    <ng-content></ng-content>
+    <ng-container *ngFor="let column of columns" [matColumnDef]="column">
+        <th mat-header-cell *matHeaderCellDef>
+                @switch (column) {
+                    @case ('beginning_balance') {
+                        {{ 'Beginning Balance' }}
+                    }
+                    @case ('span') {
+                        &nbsp;
+                    }
+                    @case ('operation') {
+                        &nbsp;
+                    }
+                    @case ('remove') {
+                        &nbsp;
+                    }
+                    @default {
+                        {{ column | uppercase }}
+                    }
+                }
+        </th>
+        <td mat-cell *matCellDef="let element" class="cell" [class.no-border]="group === 'transactions'">
+            <ng-container>
+                @switch (group) {
+                    @case ('statements') {
+                        @if(column.toLowerCase().includes('date')) {
+                            {{ statementData(element, column) | date:'MM-yyyy':'UTC' }}
+                        } @else if(column === 'remove') {
+                            <button mat-icon-button (click)="removeStatement(element['id'])">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        } @else if(['revenue', 'deposits', 'withdrawals'].includes(column.toLowerCase())) {
+                            {{ statementData(element, column) | currency:'USD':'symbol':'1.2-2':'en-US' }}
+                        } @else {
+                            {{ element[column] | uppercase }}
+                        }
+                    }
+                    @default {
+                        @switch (column) {
+                            @case ('amount') {
+                                {{ element[column] | currency:'USD':'symbol':'1.2-2':'en-US' }}
+                            }
+                            @case ('balance') {
+                                {{ element[column] | currency:'USD':'symbol':'1.2-2':'en-US' }}
+                            }
+                            @case ('beginning_balance') {
+                                {{ element[column] | currency:'USD':'symbol':'1.2-2':'en-US' }}
+                            }
+                            @case ('date') {
+                                {{ element[column] | date: (element.class === 'statement' ? 'MM-yyyy' : 'MM-dd-yyyy'):'UTC' }}
+                            }
+                            @case ('operation') {
+                                {{ element[column] === 'deposit' ? '+' : '-' }}
+                            }
+                            @case ('description') {
+                                {{ element[column] | slice:0:500 }}
+                            }
+                            @case ('span') {
+                                &nbsp;
+                            }
+                            @case ('transactions') {
+                                {{ element.stats.deposits.count + element.stats.withdrawals.count }}
+                            }
+                            @case ('deposits') {
+                                {{ element.stats.deposits.total | currency:'USD':'symbol':'1.2-2':'en-US' }}
+                            }
+                            @case ('withdrawals') {
+                                {{ element.stats.withdrawals.total | currency:'USD':'symbol':'1.2-2':'en-US' }}
+                            }
+                            @case ('payments') {
+                                {{ element.stats.payments.total | currency:'USD':'symbol':'1.2-2':'en-US' }}
+                            }
+                            @default {
+                                {{ element[column] | uppercase }}
+                            }
+                        }
+
+                    }
+                }
+            </ng-container>
+        </td>
+    </ng-container>
+
+    <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let element" [attr.colspan]="columns.length">
+            <div [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                @switch (group) {
+                    @case ('statements') {
+                        <app-profile-banking-stats-statement [statement]="element"></app-profile-banking-stats-statement>
+                    }
+                }
+            </div>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns;" [style]="group === 'transactions' ? 'height: 1px;' : ''"></tr>
+    <tr mat-row matRipple *matRowDef="let row; columns: columns" class="element-row"
+        [class.expanded-row]="expandedElement === row" (click)="expandedElement = expandedElement === row ? null : row">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="expanded-row"></tr>
+
+    <tr class="noDataRow mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="5">No data to show</td>
+    </tr>
+</table>

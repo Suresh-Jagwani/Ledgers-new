@@ -1,0 +1,82 @@
+<div class="profile-banking-calculator">
+    <form [formGroup]="calculatorForm" class="profile-banking-calculator__form">
+        <div class="profile-banking-calculator__form__element">
+            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                <mat-label>Duration</mat-label>
+                <input matInput type="number" formControlName="duration">
+            </mat-form-field>
+            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                <mat-label>Timeframe</mat-label>
+                <mat-select formControlName="timeframe">
+                    <mat-option value="daily">Daily</mat-option>
+                    <mat-option value="weekly">Weekly</mat-option>
+                    <mat-option value="monthly">Monthly</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="profile-banking-calculator__form__element">
+            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                <mat-label>PV</mat-label>
+                <input matInput type="number" formControlName="pv" step="10000">
+            </mat-form-field>
+            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                <mat-label>Factor Rate</mat-label>
+                <input matInput type="number" formControlName="interestRate" step="5">
+            </mat-form-field>
+        </div>
+        <div class="profile-banking-calculator__form__element">
+            <mat-form-field subscriptSizing="dynamic">
+                <mat-label>Payments</mat-label>
+                <input matInput type="number" formControlName="payments">
+            </mat-form-field>
+            <mat-form-field subscriptSizing="dynamic">
+                <mat-label>FV</mat-label>
+                <input matInput type="number" formControlName="fv">
+            </mat-form-field>
+        </div>
+    </form>
+    <div class="profile-banking-calculator__stats">
+        <div class="profile-banking-calculator__stats__column">
+            <div class="profile-banking-calculator__stats__column__stat">
+                <span class="profile-banking-calculator__stats__column__stat__title">Income-PMT</span>
+                <span class="profile-banking-calculator__stats__column__stat__value">0.0</span>
+            </div>
+            <div class="profile-banking-calculator__stats__column__stat">
+                <span class="profile-banking-calculator__stats__column__stat__title">Revenue-PMT</span>
+                <span class="profile-banking-calculator__stats__column__stat__value">0.0</span>
+            </div>
+            <div class="profile-banking-calculator__stats__column__stat">
+                <span class="profile-banking-calculator__stats__column__stat__title">T_Revenue-PMT</span>
+                <span class="profile-banking-calculator__stats__column__stat__value">0.0</span>
+            </div>
+        </div>
+        <div class="profile-banking-calculator__stats__column">
+            <div class="profile-banking-calculator__stats__column__stat">
+                <span class="profile-banking-calculator__stats__column__stat__title">Debt-Income</span>
+                <span class="profile-banking-calculator__stats__column__stat__value">0.0</span>
+            </div>
+            <div class="profile-banking-calculator__stats__column__stat">
+                <span class="profile-banking-calculator__stats__column__stat__title">Debt-Revenue</span>
+                <span class="profile-banking-calculator__stats__column__stat__value">0.0</span>
+            </div>
+            <div class="profile-banking-calculator__stats__column__stat">
+                <span class="profile-banking-calculator__stats__column__stat__title">Debt-T_Revenue</span>
+                <span class="profile-banking-calculator__stats__column__stat__value">0.0</span>
+            </div>
+        </div>
+        <div class="profile-banking-calculator__stats__column">
+            <div class="profile-banking-calculator__stats__column__stat">
+                <span class="profile-banking-calculator__stats__column__stat__title">Withdrawals-PMT</span>
+                <span class="profile-banking-calculator__stats__column__stat__value">0.0</span>
+            </div>
+            <div class="profile-banking-calculator__stats__column__stat">
+                <span class="profile-banking-calculator__stats__column__stat__title">Debt-PMT</span>
+                <span class="profile-banking-calculator__stats__column__stat__value">0.0</span>
+            </div>
+            <div class="profile-banking-calculator__stats__column__stat">
+                <span class="profile-banking-calculator__stats__column__stat__title">Debt</span>
+                <span class="profile-banking-calculator__stats__column__stat__value">0.0</span>
+            </div>
+        </div>
+    </div>
+</div>

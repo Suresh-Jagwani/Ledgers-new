@@ -1,0 +1,34 @@
+<div class="parser">
+  <mat-drawer-container hasBackdrop="false" autosize>
+    <mat-drawer #drawer mode="side" opened>
+      <app-parser-form></app-parser-form>
+    </mat-drawer>
+    <mat-drawer-content #drawerContent>
+      <div class="content">
+        <div class="content__toolbar">
+          <mat-card class="flex">
+            <mat-card-content>
+              <div>
+                <button mat-icon-button (click)="drawer.toggle()">
+                  <mat-icon>filter_list</mat-icon>
+                </button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+          <div>
+            <mat-card>
+              <mat-card-content>
+                <mat-button-toggle-group>
+                  <mat-button-toggle [routerLink]="'./schemes'" routerLinkActive #rlaMerchants="routerLinkActive" [checked]="rlaMerchants.isActive">Schemes</mat-button-toggle>
+                  <mat-button-toggle [routerLink]="'./keys'" routerLinkActive #rlaOwners="routerLinkActive" [checked]="rlaOwners.isActive">Keys</mat-button-toggle>
+                </mat-button-toggle-group>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+        <div class="content__elements">
+        </div>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Keys</h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="parametersForm" class="owner">
+        <mat-form-field>
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="type">
+                <mat-option value="deposit">Deposit</mat-option>
+                <mat-option value="withdrawal">Withdrawal</mat-option>
+                <mat-option value="payment">Payment</mat-option>
+            </mat-select>
+            <mat-error>Please choose an entity</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Bank</mat-label>
+            <mat-select formControlName="format">
+                <mat-option>All</mat-option>
+                @for(format of this.formats; track format) {
+                <mat-option value="format.format.id">{{format.format.bank | uppercase}}</mat-option>
+                }
+            </mat-select>
+            <mat-error>Please choose an entity</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Value</mat-label>
+            <input matInput formControlName="value">
+            <mat-error>Please enter a valid Last Name</mat-error>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" (click)="insertKey()" cdkFocusInitial
+        [disabled]="!parametersForm.valid">Create</button>
+</mat-dialog-actions>

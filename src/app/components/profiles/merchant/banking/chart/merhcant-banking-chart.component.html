@@ -1,0 +1,11 @@
+@switch(type) {
+    @case ("pie") {
+        <canvas *ngIf="isBrowser" baseChart [data]="pieConfig.data" [options]="pieConfig.options" [type]="pieConfig.type"></canvas>
+    }
+    @case ("bar") {
+        <canvas *ngIf="isBrowser" baseChart [data]="barConfig.data" [options]="barConfig.options" [type]="barConfig.type"></canvas>
+    }
+    @default {
+        <canvas *ngIf="isBrowser" baseChart [data]="lineConfig.data" [options]="lineConfig.options" [type]="lineConfig.type"></canvas>
+    }
+}

@@ -1,0 +1,23 @@
+<div class="parser-banking">
+    <div class="parser-banking__form">
+        <app-parser-banking-form></app-parser-banking-form>
+    </div>
+    <div class="parser-banking__content">
+        <mat-accordion multi>
+
+            @for (format of formats; track $index) {
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{format.format.bank | uppercase}}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            {{format.format.bank | uppercase}} -
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <app-parser-banking-format [format]="format"></app-parser-banking-format>
+                </mat-expansion-panel>
+            }
+        </mat-accordion>
+    </div>
+</div>

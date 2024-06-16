@@ -1,0 +1,43 @@
+.database-table {
+    width: 100%;
+    height: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-mdc-cell {
+    padding: 0;
+}
+
+.mat-mdc-cell, .mat-mdc-header-cell {
+    border-left: 1px solid rgb(185, 185, 185);
+    border-right: 1px solid rgb(185, 185, 185);
+}
+
+.mat-column-select {
+    text-align: center;
+    width: 25px;
+}
+
+.mat-column-phone, .mat-column-ein, .mat-column-start_date {
+    width: 25px;
+}
+
+.noDataRow {
+    text-align: center;
+    height: 50px;
+}
+  
+tr.element-row:not(.expanded-row):hover {
+    background: whitesmoke;
+}
+  
+tr.element-row:not(.expanded-row):active {
+    background: #efefef;
+}
+  
+mat-form-field {
+    width: 100%;
+}

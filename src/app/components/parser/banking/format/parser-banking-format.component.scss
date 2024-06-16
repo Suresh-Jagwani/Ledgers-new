@@ -1,0 +1,41 @@
+.parser-banking-format {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 0;
+
+    &__section {
+        padding: 0 100px;
+    }
+
+}
+
+.list {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 50px;
+    row-gap: 25px;
+    padding: 25px 70px;
+    font-size: large;
+
+
+    &__title {
+        text-align: end;
+    }
+
+    &__value {
+        font-weight: bold !important;
+    }
+}
+
+mat-divider {
+    margin: 25px 0;
+}
+
+.title {
+    width: fit-content;
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 15px;
+    align-items: center;
+}

@@ -1,0 +1,79 @@
+<div class="merchants-form">
+    <mat-card>
+        <form [formGroup]="userForm">
+            <mat-card-content>
+                <div class="merchants-form__content">
+                    <mat-form-field [hideRequiredMarker]="true" appearance="fill">
+                        <mat-label>EIN</mat-label>
+                        <input matInput formControlName="ein" type="tel" maxlength="9" placeholder="">
+                        <mat-error *ngIf="userForm.controls.ein.invalid">Please enter a valid EIN</mat-error>
+                    </mat-form-field>
+                    <mat-form-field [hideRequiredMarker]="true" appearance="fill">
+                        <mat-label>Business Legal Name</mat-label>
+                        <input matInput formControlName="name" placeholder="Business Legal Name">
+                        <mat-error *ngIf="userForm.controls.name.invalid">Please enter a valid Business Legal Name</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Industry</mat-label>
+                        <mat-select formControlName="industry">
+                            <mat-option value="option1">Option 1</mat-option>
+                            <mat-option value="option2">Option 2</mat-option>
+                            <mat-option value="option3">Option 3</mat-option>
+                            <mat-option value="other">Option 3</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="visibility: hidden;">
+                        <mat-label>Other Industry</mat-label>
+                        <input matInput formControlName="industry_other">
+                        <mat-error>Please enter a valid email</mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Legal Entity</mat-label>
+                        <mat-select formControlName="legal_entity">
+                            <mat-option value="llc">Limited liability partnership (LLC)</mat-option>
+                            <mat-option value="option2">Option 2</mat-option>
+                            <mat-option value="option3">Option 3</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Business Start Date</mat-label>
+                        <input matInput formControlName="start_date" [matDatepicker]="picker" placeholder="MM/DD/YYYY">
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker touchUi #picker></mat-datepicker>
+                        <mat-error>Please enter a valid email</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Primary Phone</mat-label>
+                        <input matInput formControlName="primary_phone">
+                        <mat-icon matSuffix>phone</mat-icon>
+                        <mat-error>Please enter a valid email</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Secondary Phone</mat-label>
+                        <input matInput formControlName="secondary_phone">
+                        <mat-icon matSuffix>phone</mat-icon>
+                        <mat-error>Please enter a valid email</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Business Mail</mat-label>
+                        <input matInput formControlName="email">
+                        <mat-icon matSuffix>email</mat-icon>
+                        <mat-error *ngIf="userForm.controls.email.invalid && userForm.controls.email.untouched">Please enter a valid email</mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Company Website</mat-label>
+                        <input matInput formControlName="website">
+                        <mat-icon matSuffix>web</mat-icon>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="double">
+                        <mat-label>Address</mat-label>
+                        <input matInput formControlName="address">
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-raised-button color="primary" type="button" (click)="insertMerchant()" [disabled]="!userForm.valid">Submit</button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>

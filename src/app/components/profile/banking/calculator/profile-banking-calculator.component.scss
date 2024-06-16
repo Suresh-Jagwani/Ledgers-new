@@ -1,0 +1,45 @@
+.profile-banking-calculator {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 60px;
+    padding: 25px;
+    height: 100%;
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        &__element {
+            display: flex;
+        }
+    }
+
+    &__stats {
+        display: flex;
+        font-size: 20px;
+        gap: 50px;
+
+        &__column {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            gap: 7px;
+
+            &__stat {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+                width: 170px;
+
+                &__title {
+                    color: #797979bb;
+                }
+
+                &__value {
+
+                }
+            }
+        }
+    }
+}

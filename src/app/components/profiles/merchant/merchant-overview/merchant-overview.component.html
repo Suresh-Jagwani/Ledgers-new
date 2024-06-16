@@ -1,0 +1,29 @@
+
+@if (merchant) {
+    <div class="merchant-overview">
+        <mat-card>
+            <mat-card-content>
+                <mat-list>
+                    <div class="merchant-overview__details">
+                        <mat-list-item>
+                            <span matListItemTitle>{{ merchant.name }}</span>
+                            <span matListItemLine>EIN: {{ merchant.ein }}</span>
+                            <span matListItemLine>Address: address</span>
+                            <span matListItemLine>Industry: industry</span>
+                            <span matListItemLine>Legal Entity: LLC</span>
+                            <span matListItemLine>Start Date: date</span>
+                        </mat-list-item>
+                        <mat-list-item>
+                            <span matListItemTitle>&nbsp;</span>
+                            <span matListItemLine>Primary Phone: phone</span>
+                            <span matListItemLine>Secondary Phone: phone</span>
+                            <span matListItemLine>Email: mail</span>
+                            <span matListItemLine>Website: site</span>
+                            <span matListItemLine>&nbsp;</span>
+                        </mat-list-item>
+                    </div>
+                </mat-list>
+            </mat-card-content>
+        </mat-card>
+    </div>
+}

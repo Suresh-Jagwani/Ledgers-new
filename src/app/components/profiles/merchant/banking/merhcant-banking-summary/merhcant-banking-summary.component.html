@@ -1,0 +1,17 @@
+<div class="merchant-banking-summary">
+    <mat-card class="merchant-banking-summary__full">
+        <mat-card-content>
+            <canvas *ngIf="isBrowser" baseChart [data]="lineConfig.data" [options]="lineConfig.options" [type]="lineConfig.type"></canvas>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-content>
+            <canvas *ngIf="isBrowser" baseChart [data]="barConfig.data" [options]="barConfig.options" [type]="barConfig.type"></canvas>
+        </mat-card-content>
+    </mat-card>
+    <mat-card>
+        <mat-card-content>
+            <canvas *ngIf="isBrowser" baseChart [data]="pieConfig.data" [options]="pieConfig.options" [type]="pieConfig.type"></canvas>
+        </mat-card-content>
+    </mat-card>
+</div>

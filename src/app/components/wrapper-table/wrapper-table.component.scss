@@ -1,0 +1,76 @@
+
+table {
+    width: 100%;
+}
+
+td, th {
+    font-size: 17px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.cell {
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+
+.mat-column-date {
+    width: 130px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.mat-column-expand {
+    padding: 0;
+}
+
+.mat-column-account, .mat-column-bank {
+    width: 200px;
+    text-align: center;
+}
+
+.mat-column-span {
+    width: 250px;
+    padding: 0;
+}
+
+.mat-column-amount, .mat-column-balance, .mat-column-beginning_balance {
+    font-weight: bold;
+    text-align: center;
+}
+
+.mat-column-operation {
+    font-weight: bold;
+    width: 8px;
+    text-align: center;
+}
+
+.mat-column-section {
+    width: 180px;
+    text-align: center;
+}
+
+.noDataRow {
+    text-align: center;
+    height: 50px;
+}
+
+tr.expanded-row {
+    height: 0;
+}
+  
+tr.element-row:not(.expanded-row):hover {
+    background: whitesmoke;
+}
+  
+tr.element-row:not(.expanded-row):active {
+    background: #efefef;
+}
+
+.cdk-column-expandedDetail {
+    background-color: #f8f8f8;
+    box-shadow:
+    inset 0px 2px 3px -1px rgba(0, 0, 0, 0.15), 
+    inset 0px 3px 4px 0px rgba(0, 0, 0, 0.1), 
+    inset 0px 1px 5px 0px rgba(0, 0, 0, 0.09) !important;
+}

@@ -1,0 +1,44 @@
+.merchant-banking-stats {
+    display: flex;
+    flex-wrap: wrap;
+
+    &__item {
+        flex: 0 0 50%;
+        padding: 0;
+    }
+}
+
+th, td {
+    text-align: center;
+}
+
+.mat-column-date {
+    font-weight: bold;
+}
+
+.mat-column-count {
+    width: 50px;
+    padding: 0;
+}
+
+.mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.noDataRow {
+    text-align: center;
+    height: 50px;
+}
+  
+tr.element-row:not(.expanded-row):hover {
+    background: whitesmoke;
+}
+  
+tr.element-row:not(.expanded-row):active {
+    background: #efefef;
+}
+  
+.element-row td {
+    border-bottom-width: 0;
+}

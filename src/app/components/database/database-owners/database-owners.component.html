@@ -1,0 +1,42 @@
+<div class="database-owners">
+    <table mat-table matSort matSortActive="name" matSortDisableClear matSortDirection="asc" multiTemplateDataRows
+        [dataSource]="dataSource">
+        @for (column of columns; track $index) {
+        <ng-container [matColumnDef]="column">
+            @if (column === 'select') {
+            <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                    [checked]="selection.hasValue() && this.selection.selected.length === this.dataSource.data.length"
+                    [indeterminate]="selection.hasValue() && this.selection.selected.length !== this.dataSource.data.length">
+                </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(element) : null"
+                    [checked]="selection.isSelected(element)">
+                </mat-checkbox>
+            </td>
+            }
+            @else {
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>{{column | uppercase}}</th>
+            <td mat-cell *matCellDef="let element">
+                @switch (column) {
+                    @case ('start_date') {
+                        {{ element[column].toLocaleString() | date: 'mediumDate': 'GMT'}}
+                    }
+                    @default {
+                        {{ element[column] }}
+                    }
+                }
+            </td>
+            }
+        </ng-container>
+        }
+
+        <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns" class="element-row" (click)="selection.toggle(row)"></tr>
+
+        <tr class="noDataRow mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="5">No data to show</td>
+        </tr>
+    </table>
+</div>

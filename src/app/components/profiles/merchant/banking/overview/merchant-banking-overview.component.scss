@@ -1,0 +1,40 @@
+
+.merchant-banking-overview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    height: 100%;
+    width: 100%;
+    gap: 13px;
+
+    &__small {
+        grid-column: span 1;
+    }
+
+    &__large {
+        grid-column: span 2;
+    }
+
+    &__full {
+        grid-column: span 3;
+    }
+
+    &__long {
+        height: 450px;
+    }
+
+    &__short {
+        height: 400px;
+    }
+}
+
+mat-card {
+    height: 100%;
+    margin: 3px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12) !important;
+}
+
+mat-card-content {
+    height: 100%;
+    padding: 3px !important;
+}

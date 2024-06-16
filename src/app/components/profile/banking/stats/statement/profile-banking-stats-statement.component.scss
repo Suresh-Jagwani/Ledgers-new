@@ -1,0 +1,9 @@
+.profile-banking-stats-statement {
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    grid-template-rows: repeat(auto, auto);
+    font-size: 17px;
+    gap: 30px;
+    padding: 20px 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

@@ -1,0 +1,31 @@
+<div class="merchant-banking-balances">
+    <table mat-table matSort matSortActive="date" matSortDisableClear matSortDirection="asc" multiTemplateDataRows
+        [dataSource]="dataSource">
+        @for (column of balancesColumns; track $index) {
+        <ng-container [matColumnDef]="column">
+            <th mat-header-cell mat-sort-header *matHeaderCellDef>{{column | uppercase}}</th>
+            <td mat-cell *matCellDef="let element">
+                <ng-container>
+                    @if (column !== 'date' && column !== 'count') {
+                    {{ element[column] | currency:'USD':'symbol':'1.2-2':'en-US' }}
+                    } @else if(column === 'date') {
+                    {{ element[column] | date: 'MMM d-yyyy':'UTC' }}
+                    } @else {
+                    {{ element[column] }}
+                    }
+                </ng-container>
+            </td>
+        </ng-container>
+        }
+
+        <tr mat-header-row *matHeaderRowDef="balancesColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: balancesColumns" class="element-row">
+        </tr>
+
+        <tr class="noDataRow mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="5">No data to show</td>
+        </tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons
+        aria-label="Select page of periodic elements"></mat-paginator>
+</div>

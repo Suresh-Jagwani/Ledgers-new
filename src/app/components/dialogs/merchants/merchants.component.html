@@ -1,0 +1,140 @@
+<h2 mat-dialog-title>Merchant</h2>
+<mat-dialog-content>
+    <form [formGroup]="merchantForm" class="merchant">
+        <mat-form-field>
+            <mat-label>EIN</mat-label>
+            <input matInput formControlName="ein" type="tel" maxlength="9">
+            <mat-error>Please enter a valid EIN</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Business Legal Name</mat-label>
+            <input matInput formControlName="name">
+            <mat-error>Please enter a valid Business Name</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Industry</mat-label>
+            <mat-select formControlName="industry">
+                @for (group of this.insudries; track group) {
+                    <mat-optgroup [label]="group.category">
+                    @for (industry of group.subCategory; track industry) {
+                        <mat-option [value]="industry.value">{{industry.viewValue}}</mat-option>
+                    }
+                    </mat-optgroup>
+                }
+            </mat-select>
+            <mat-error>Please choose an Industry</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Legal Entity</mat-label>
+            <mat-select formControlName="legal_entity">
+                <mat-option value="llc">Limited liability partnership (LLC)</mat-option>
+                <mat-option value="option2">Option 2</mat-option>
+                <mat-option value="option3">Option 3</mat-option>
+            </mat-select>
+            <mat-error>Please choose an entity</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Start Date</mat-label>
+            <input matInput formControlName="start_date" [matDatepicker]="start_date" placeholder="MM/DD/YYYY">
+            <mat-datepicker-toggle matIconSuffix [for]="start_date"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #start_date></mat-datepicker>
+            <mat-error>Please enter a valid date</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Company Phone</mat-label>
+            <input matInput formControlName="phone" type="tel" maxlength="10">
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error>Please enter a valid phone number</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Company Mail</mat-label>
+            <input matInput formControlName="email">
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error *ngIf="merchantForm.controls.email.invalid && merchantForm.controls.email.untouched">Please enter a valid email</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Company Website</mat-label>
+            <input matInput formControlName="website">
+            <mat-icon matSuffix>web</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="full">
+            <mat-label>Company Address</mat-label>
+            <input matInput formControlName="address">
+        </mat-form-field>
+        <mat-form-field class="large">
+            <mat-label>Owner</mat-label>
+            <input matInput formControlName="website">
+            <mat-error>Please enter a valid phone number</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="small">
+            <mat-label>Ownership %</mat-label>
+            <mat-select formControlName="legal_entity">
+                <mat-option *ngFor="let number of [].constructor(101); let i = index" [value]="i">{{ i }}%</mat-option>
+            </mat-select>
+            <mat-error>Please choose an entity</mat-error>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" (click)="insertMerchant()" cdkFocusInitial [disabled]="!merchantForm.valid || !ownerForm.valid">Create</button>
+</mat-dialog-actions>
+
+<!--
+    <h2 mat-dialog-title>Owners</h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="ownerForm" class="owner">
+        <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="first_name">
+            <mat-error>Please enter a valid First Name</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="last_name">
+            <mat-error>Please enter a valid Last Name</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Ownership %</mat-label>
+            <input matInput formControlName="ownership">
+            <mat-error>Please enter a number between 1-100</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>SSN</mat-label>
+            <input matInput formControlName="ssn" type="tel" maxlength="9">
+            <mat-error>Please enter a valid SSN</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="phone" type="tel" maxlength="10">
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error>Please enter a valid phone number</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Mail</mat-label>
+            <input matInput formControlName="email">
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error>Please enter a valid email</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Birth Date</mat-label>
+            <input matInput formControlName="birth_date" [matDatepicker]="birth_date" placeholder="MM/DD/YYYY">
+            <mat-datepicker-toggle matIconSuffix [for]="birth_date"></mat-datepicker-toggle>
+            <mat-datepicker touchUi #birth_date></mat-datepicker>
+            <mat-error>Please enter a valid date</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>FICO</mat-label>
+            <input matInput formControlName="fico">
+            <mat-error>Please enter a valid fico number</mat-error>
+        </mat-form-field>
+        <mat-form-field class="full_width">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address">
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+-->

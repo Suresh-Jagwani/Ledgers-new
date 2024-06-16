@@ -1,0 +1,37 @@
+<div class="merchant-banking-stats">
+  <div class="merchant-banking-stats__item">
+    <table mat-table matSort matSortDisableClear matSortDirection="asc" multiTemplateDataRows [dataSource]="dataSource">
+
+      <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+          @if (column === 'subject') {
+          }
+          @else {
+          {{column | uppercase}}
+          }
+
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <ng-container>
+            @if (column === 'subject') {
+            {{ element[column] | uppercase }}
+            }
+            @else if (column !== 'count') {
+            {{ element[column] | currency:'USD':'symbol':'1.2-2':'en-US' }}
+            } @else {
+            {{ element[column] }}
+            }
+          </ng-container>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" class="element-row"></tr>
+
+      <tr class="noDataRow mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="5">No data to show</td>
+      </tr>
+
+    </table>
+  </div>
+</div>

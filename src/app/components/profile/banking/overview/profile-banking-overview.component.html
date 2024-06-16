@@ -1,0 +1,76 @@
+<div class="profile-banking-overview">
+    <mat-card>
+        <mat-card-content>
+            <app-profile-banking-chart #chart></app-profile-banking-chart>
+        </mat-card-content>
+    </mat-card>
+    <div class="pie-charts">
+        <mat-card>
+            <mat-card-content>
+                <app-profile-banking-chart type="pie"></app-profile-banking-chart>
+            </mat-card-content>
+        </mat-card>
+        <mat-card>
+            <mat-card-content>
+                <app-profile-banking-chart type="pie"></app-profile-banking-chart>
+            </mat-card-content>
+        </mat-card>
+        <mat-card>
+            <mat-card-content>
+                <app-profile-banking-chart type="pie"></app-profile-banking-chart>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div>
+        <mat-card>
+            <mat-card-content>
+                <app-monthly></app-monthly>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div>
+        <mat-card>
+            <mat-card-content>
+                <app-profile-banking-stats></app-profile-banking-stats>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div>
+        <mat-card>
+            <mat-card-content>
+                <app-profile-banking-transactions></app-profile-banking-transactions>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <!--
+
+        <div class="profile-banking-overview__full">
+            <mat-card>
+                <mat-card-content>
+                    <app-merchant-banking-stats></app-merchant-banking-stats>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="profile-banking-overview__large profile-banking-overview__short">
+            <mat-card>
+                <mat-card-content>
+                    <app-merhcant-banking-chart type="bar" [dataset]="barConfig" #chart></app-merhcant-banking-chart>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="profile-banking-overview__small profile-banking-overview__short">
+            <mat-card>
+                <mat-card-content>
+                    <app-merhcant-banking-chart type="pie" [dataset]="pieConfig" #chart></app-merhcant-banking-chart>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="profile-banking-overview__full">
+            <mat-card>
+                <mat-card-content>
+                    <app-merchant-banking-balances [balances]="balances"></app-merchant-banking-balances>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    -->
+</div>

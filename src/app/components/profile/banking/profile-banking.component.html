@@ -1,0 +1,93 @@
+<div class="profile-banking">
+    <mat-drawer-container hasBackdrop="false" autosize>
+        <mat-drawer #drawer mode="side" opened="false">
+            <app-profile-banking-form></app-profile-banking-form>
+        </mat-drawer>
+        <mat-drawer-content #drawerContent>
+            <div class="content">
+                <div class="content__toolbar">
+                    <mat-card class="flex">
+                        <mat-card-content>
+                            <div class="content__toolbar__dates">
+                                <button mat-icon-button (click)="drawer.toggle()">
+                                    <mat-icon>filter_list</mat-icon>
+                                </button>
+                                @if (statements) {
+                                <!--
+                                        <div class="chips">
+                                            <button (click)="activateAll()" [class.active-chip]="isAllSelected()" class="chips__chip" mat-fab extended>
+                                                @if (isAllSelected()) {
+                                                    <mat-icon style="margin-right: 5px;">done</mat-icon>
+                                                }
+                                                ALL
+                                            </button>
+                                            @for (statement of statements; track statement) {
+                                            <button (click)="activateChip(statement)" [class.active-chip]="isSelected(statement)" class="chips__chip" mat-fab extended>
+                                                @if (isSelected(statement)) {
+                                                    <mat-icon style="margin-right: 5px;">done</mat-icon>
+                                                }
+                                                {{statement.date | date:'MMM-YY':'UTC'}}
+                                            </button>
+                                            }
+                                        </div>
+
+                                    -->
+                                <mat-chip-listbox (change)="activateAll($event)">
+                                    <mat-chip-option (selectionChange)="selectAll($event)" #all color="primary">
+                                        ALL
+                                    </mat-chip-option>
+                                </mat-chip-listbox>
+                                <mat-chip-listbox multiple #chips (change)="activate($event)">
+                                    @for (statement of statements | async; track statement) {
+                                    <mat-chip-option color="primary" [selected]="isSelected(statement)" [value]="statement">
+                                        {{statement.date | date:'MMM-YY':'UTC'}}
+                                    </mat-chip-option>
+                                    }
+                                </mat-chip-listbox>
+                                }
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                    <mat-card>
+                        <mat-card-content>
+                            <div class="content__toolbar__actions">
+                                <mat-button-toggle-group>
+                                    <mat-button-toggle [routerLink]="'./overview'" routerLinkActive
+                                        #rlaOverview="routerLinkActive"
+                                        [checked]="rlaOverview.isActive">Overview</mat-button-toggle>
+                                    <mat-button-toggle [routerLink]="'./statements'" routerLinkActive
+                                        #rlaStatements="routerLinkActive"
+                                        [checked]="rlaStatements.isActive">Summary</mat-button-toggle>
+                                </mat-button-toggle-group>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="content__elements">
+                    @if (statements) {
+                    <router-outlet></router-outlet>
+                    } @else {
+                    <mat-spinner></mat-spinner>
+                    }
+                </div>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
+</div>
+
+<!--
+<mat-chip-listbox (change)="activateAll($event)">
+                                    <mat-chip-option [selected]="activeStatements.length === statements.length" #all
+                                        color="primary">
+                                        ALL
+                                    </mat-chip-option>
+                                </mat-chip-listbox>
+                                <mat-chip-listbox #chips multiple (change)="activateChip($event)">
+                                    @for (statement of statements; track statement) {
+                                    <mat-chip-option color="primary" #chip
+                                        [selected]="activeStatements.includes(statement)" [value]="statement">
+                                        {{statement.date | date:'MMM-YY':'UTC'}}
+                                    </mat-chip-option>
+                                    }
+                                </mat-chip-listbox>
+-->

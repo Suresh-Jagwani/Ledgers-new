@@ -1,0 +1,39 @@
+<div class="article">
+    <div class="layout">
+        <input type="file" (change)="handleFileSelect($event)">
+        <div class="layout__top">
+
+            <div class="layout__chart">
+                <app-statement-line></app-statement-line>
+            </div>
+            <div class="layout__chart">
+                <app-statement-bar></app-statement-bar>
+            </div>
+            <div class="layout__chart">
+                <app-statement-doughnut></app-statement-doughnut>
+            </div>
+            
+            <mat-tab-group mat-stretch-tabs="true" class="layout_overview mat-elevation-z4">
+                <mat-tab label="Overview">
+                    <ng-template mat-tab-label>Overview</ng-template>
+                    <app-statement-overview></app-statement-overview>
+                </mat-tab>
+                <mat-tab label="Summary">
+                    <ng-template mat-tab-label>Summary</ng-template>
+                    <app-statement-summary></app-statement-summary>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    
+        <div class="layout__bottom">
+            <div class="layout_transactions">
+                <mat-tab-group mat-stretch-tabs dynamicHeight class="mat-elevation-z4">
+                <mat-tab label="Transactions">
+                    <ng-template mat-tab-label>Transactions</ng-template>
+                    <app-statement-transactions [columns]="columns"></app-statement-transactions>
+                </mat-tab>
+            </mat-tab-group>  
+            </div>
+        </div>
+    </div>
+</div>

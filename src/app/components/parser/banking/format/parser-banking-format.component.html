@@ -1,0 +1,83 @@
+<div class="parser-banking-format">
+    <div class="parser-banking-format__section">
+        <h2 class="title">
+            <span>Format</span>
+            <button mat-icon-button matTooltip="Edit">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </h2>
+        <div class="list">
+            <div class="list__title">Bank</div>
+            <div class="list__value">{{format.format.bank | uppercase}}</div>
+            <div class="list__title">Type</div>
+            <div class="list__value">{{format.format.type | uppercase}}</div>
+            <div class="list__title">Identifier</div>
+            <div class="list__value">"{{format.format.identifier}}"</div>
+            <div class="list__title">Date Format</div>
+            <div class="list__value">"{{format.format.date_pattern}}"</div>
+            <div class="list__title">Date Pattern</div>
+            <div class="list__value">"{{format.format.date_line_pattern}}"</div>
+            <div class="list__title">Date Pivots</div>
+            @for (pivot of format.parameters.date; track $index) {
+                @if ($index > 0) {
+                    <div class="list__title"></div>
+                }
+                <div class="list__value">"{{pivot.value}}"</div>
+            }
+            @if (format.parameters.date.length === 0) {
+                <div class="list__title"></div>
+            }
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="parser-banking-format__section">
+        <h2 class="title">
+            <span>Key Words</span>
+            <button mat-icon-button matTooltip="Edit">
+                <mat-icon>edit</mat-icon>
+            </button>
+        </h2>
+        <div class="list">
+            <div class="list__title">Deposits</div>
+            @for (pivot of format.parameters.deposit; track $index) {
+                @if ($index > 0) {
+                    <div class="list__title"></div>
+                }
+                <div class="list__value">"{{pivot.value}}"</div>
+            }
+            @if (format.parameters.deposit.length === 0) {
+                <div class="list__title"></div>
+            }
+            <div class="list__title">Withdrawals</div>
+            @for (pivot of format.parameters.withdrawal; track $index) {
+                @if ($index > 0) {
+                    <div class="list__title"></div>
+                }
+                <div class="list__value">"{{pivot.value}}"</div>
+            }
+            @if (format.parameters.withdrawal.length === 0) {
+                <div class="list__title"></div>
+            }
+            <div class="list__title">Revenue</div>
+            @for (pivot of format.parameters.revenue; track $index) {
+                @if ($index > 0) {
+                    <div class="list__title"></div>
+                }
+                <div class="list__value">"{{pivot.value}}"</div>
+            }
+            @if (format.parameters.revenue.length === 0) {
+                <div class="list__title"></div>
+            }
+            <div class="list__title">Payments</div>
+            @for (pivot of format.parameters.payment; track $index) {
+                @if ($index > 0) {
+                    <div class="list__title"></div>
+                }
+                <div class="list__value">"{{pivot.value}}"</div>
+            }
+            @if (format.parameters.payment.length === 0) {
+                <div class="list__title"></div>
+            }
+        </div>
+    </div>
+</div>

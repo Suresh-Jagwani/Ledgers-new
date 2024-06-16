@@ -1,0 +1,25 @@
+.database-table {
+    width: 100%;
+    height: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-column-select {
+    width: 25px;
+}
+
+.noDataRow {
+    text-align: center;
+    height: 50px;
+}
+  
+tr.element-row:not(.expanded-row):hover {
+    background: whitesmoke;
+}
+  
+tr.element-row:not(.expanded-row):active {
+    background: #efefef;
+}
